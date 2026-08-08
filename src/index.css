@@ -9,14 +9,18 @@ body {
   width: 100vw;
   height: 100vh;
   overflow: hidden; /* Verhindert Scrollbars */
-  background-color: #4e79df;
+  background-color: #c9c9c9; /* Beruhigender, warmer Hellgrau/Blau-Ton für Schulen */
   font-family:
     system-ui,
     -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
     sans-serif;
   margin: 0;
   padding: 0;
   position: relative;
+  color: #1e293b;
 }
 
 /* -------------------- Ampeln -------------------- */
@@ -24,14 +28,14 @@ body {
 /* Gehäuse der Ampel */
 .traffic-light {
   width: 100px;
-  background-color: #222;
+  background-color: #1e293b; /* Modernes Anthrazit statt hartem Schwarz */
   padding: 15px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   gap: 15px;
   align-items: center;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.25);
 }
 
 /* Grundzustand der Lichter (ausgeschaltet/ausgeblendet) */
@@ -40,44 +44,44 @@ body {
   height: 70px;
   border-radius: 50%;
   cursor: pointer;
-  opacity: 0.25; /* Dunkelt inaktive Lichter ab */
+  opacity: 0.2; /* Inaktive Lichter dezent abgedunkelt */
   transition:
-    opacity 0.2s ease,
-    box-shadow 0.2s ease;
+    opacity 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.15s ease;
+}
+
+.light:hover {
+  opacity: 0.4;
+  transform: scale(1.03);
 }
 
 .light.red {
-  background-color: #ff3b30;
+  background-color: #ef4444; /* Sanftes Signalrot */
 }
 
 .light.yellow {
-  background-color: #ffcc00;
+  background-color: #f59e0b; /* Warmes Bernstein-Gelb */
 }
 
 .light.green {
-  background-color: #34c759;
+  background-color: #10b981; /* Angenehmes Smaragdgrün */
 }
 
 /* Aktiver Zustand mit Leuchteffekt */
 .light.red.active {
   opacity: 1;
-  box-shadow:
-    0 0 20px #ff3b30,
-    0 0 40px #ff3b30;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.6), 0 0 35px rgba(239, 68, 68, 0.3);
 }
 
 .light.yellow.active {
   opacity: 1;
-  box-shadow:
-    0 0 20px #ffcc00,
-    0 0 40px #ffcc00;
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.6), 0 0 35px rgba(245, 158, 11, 0.3);
 }
 
 .light.green.active {
   opacity: 1;
-  box-shadow:
-    0 0 20px #34c759,
-    0 0 40px #34c759;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.6), 0 0 35px rgba(16, 185, 129, 0.3);
 }
 
 /* -------------------- Card -------------------- */
@@ -85,10 +89,12 @@ body {
 .card {
   display: inline-flex;
   align-items: stretch;
-  border-radius: 8px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 20px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
   font-family: sans-serif;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
 
   /* Verhindert Rendering-Subpixel-Verschiebungen */
   transform-origin: top left;
@@ -96,8 +102,8 @@ body {
 
 /* Linker Teil: Passt sich dem Inhalt an */
 .card-left {
-  background-color: #66d31d;
-  padding: 10px 14px;
+  background-color: #000000; /* Dunkles Passpartout für das Ampelgehäuse */
+  padding: 12px 16px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -106,9 +112,9 @@ body {
 
 /* Rechter Teil: 2 Zeilen Vor-/Nachname */
 .card-right {
-  background-color: #f4f4f9;
-  color: #333;
-  padding: 10px 16px;
+  background-color: #ffffff;
+  color: #1e293b;
+  padding: 14px 22px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -116,21 +122,17 @@ body {
   min-width: 350px;
   white-space: nowrap;
   font-size: 40px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
 /* 2. Wrapper für die visuelle Bild-Skalierung */
 .card-scaler {
-  /* 
-     Dynamische `--scale`:
-     Sorgt dafür, dass die Karte schrumpft (z.B. auf mobilen Geräten oder vielen Karten),
-     aber nie größer als Originalgröße (1) wird.
-  */
   --scale: clamp(0.3, 25vw / 400, 1);
 
   display: inline-block;
-  margin: 0; /* Margin wird jetzt vom container gap übernommen */
+  margin: 0;
   zoom: var(--scale);
 }
 
@@ -141,7 +143,6 @@ body {
   }
   .card-scaler .card {
     transform: scale(var(--scale));
-    /* Wichtig für zentriertes Transform-Behavior */
     transform-origin: center center; 
   }
 }
@@ -149,18 +150,16 @@ body {
 /* -------------------- Grid -------------------- */
 
 .grid-container {
-  /* Füllt immer genau den Bildschirm aus - absolut kein Scrollen */
   width: 100vw;
   height: 100vh;
   box-sizing: border-box;
   padding: 2vw;
   overflow: hidden;
 
-  /* Flexbox zentriert 1 Karte im Zentrum, 2 nebeneinander, 4 als 2x2 Block usw. */
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly; /* Zentriert horizontal */
-  align-content: space-evenly;   /* Zentriert vertikal */
+  justify-content: space-evenly;
+  align-content: space-evenly;
   align-items: center;
   gap: 1.5rem;
 }
@@ -173,21 +172,28 @@ a {
 
 #top-right-btn {
   position: absolute;
-  top: 15px;      /* Abstand von oben */
-  right: 15px;    /* Abstand von rechts */
-  z-index: 1000;  /* Stellt sicher, dass der Button über anderem Inhalt liegt */
+  top: 18px;
+  right: 20px;
+  z-index: 1000;
 
-  /* Optionales Styling für ein schönes Aussehen */
-  padding: 10px 16px;
-  background-color: #02992f;
-  color: white;
+  padding: 10px 20px;
+  background-color: #2563eb; /* Freundliches Blau */
+  color: #ffffff;
   border: none;
-  border-radius: 6px;
+  border-radius: 10px;
   cursor: pointer;
-  font-weight: bold;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+  transition: all 0.2s ease;
 }
 
 #top-right-btn:hover {
-  background-color: #0056b3;
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 10px -1px rgba(37, 99, 235, 0.3);
+}
+
+#top-right-btn:active {
+  transform: translateY(0);
 }
