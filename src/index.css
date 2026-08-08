@@ -110,7 +110,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: max-content;
+  flex: 1;
   min-width: 350px;
   white-space: nowrap;
   font-size: 40px;
