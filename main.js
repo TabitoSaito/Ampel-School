@@ -36,6 +36,18 @@ ipcMain.handle('save-card-data', async (event, { dataset }) => {
   return { success: true };
 });
 
+ipcMain.handle('update-traffic-light-color', async (event, { id, color }) => {
+  let cards = store.get('cardData', []);
+  id = id.split("-").at(-1)
+
+  const card = cards.find(a => a.id == id);
+
+  if (card) {
+    card.lastState = color;
+    store.set('cardData', cards);
+  }
+});
+
 app.whenReady().then(() => {
   createWindow();
 

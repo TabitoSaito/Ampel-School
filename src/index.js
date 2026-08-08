@@ -67,15 +67,19 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 /* -------------------- Ampeln -------------------- */
 
-function switchLight(color, id) {
-  // Entferne 'active' von allen Lichtern
+async function switchLight(color, id) {
   var traffic_light = document.querySelector(`#${id}`);
   traffic_light.querySelectorAll(".light").forEach((light) => {
     light.classList.remove("active");
   });
 
-  // Füge 'active' dem angeklickten Licht hinzu
   traffic_light.querySelector(`.light.${color}`).classList.add("active");
+
+  try {
+    const result = await window.cardAPI.updateLightColor(id, color);
+  } catch (err) {
+    console.error("Fehler beim Speichern im Store:", err);
+  }
 }
 
 /* -------------------- Card Scaler -------------------- */
