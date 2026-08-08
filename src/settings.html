@@ -1,0 +1,40 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <link rel="stylesheet" href="setting.css" />
+    <script src="setting.js"></script>
+  </head>
+  <body>
+
+    <a id="top-right-btn" class="icon-btn" href="index.html">Ampeln</a>
+
+    <div class="container">
+    <h2>Dataset Verwalten</h2>
+
+    <table id="dataTable">
+      <thead>
+        <tr>
+          <th>ID (nicht änderbar)</th>
+          <th>Name</th>
+          <th>Kategorie</th>
+          <th>Preis (€)</th>
+          <th>Aktionen</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+
+    <div class="actions">
+      <button class="btn" onclick="addRow()">+ Zeile hinzufügen</button>
+      <button class="btn btn-primary" onclick="saveDataset()">
+        💾 Speichern
+      </button>
+    </div>
+
+    <div id="statusMessage" class="status">
+      ✓ Änderungen wurden gespeichert!
+    </div>
+    </div>
+  </body>
+</html>

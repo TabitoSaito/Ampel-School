@@ -8,10 +8,8 @@ const __dirname = path.dirname(__filename);
 
 const store = new Store();
 
-store.clear()
-
 if (!store.has('cardData')) {
-  store.set('cardData', [{ id: 1, firstName: 'Max', lastName: 'Mustermann', lastState: 'red' }, { id: 2, firstName: 'Max', lastName: 'Gertrude', lastState: 'red' }]);
+  store.set('cardData', []);
 }
 
 const createWindow = () => {
@@ -30,6 +28,12 @@ const createWindow = () => {
 
 ipcMain.handle('get-card-data', () => {
   return store.get('cardData', [{ id: '', firstName: '', lastName: '', lastState: '' }]);
+});
+
+ipcMain.handle('save-card-data', async (event, { dataset }) => {
+  store.set('cardData', dataset);
+  console.log(dataset);
+  return { success: true };
 });
 
 app.whenReady().then(() => {

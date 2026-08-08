@@ -14,7 +14,9 @@ body {
     system-ui,
     -apple-system,
     sans-serif;
-  padding: 12px;
+  margin: 0;
+  padding: 0;
+  position: relative;
 }
 
 /* -------------------- Ampeln -------------------- */
@@ -161,4 +163,31 @@ body {
   align-content: space-evenly;   /* Zentriert vertikal */
   align-items: center;
   gap: 1.5rem;
+}
+
+/* -------------------- Setting Button -------------------- */
+
+a {
+  text-decoration: none;
+}
+
+#top-right-btn {
+  position: absolute;
+  top: 15px;      /* Abstand von oben */
+  right: 15px;    /* Abstand von rechts */
+  z-index: 1000;  /* Stellt sicher, dass der Button über anderem Inhalt liegt */
+
+  /* Optionales Styling für ein schönes Aussehen */
+  padding: 10px 16px;
+  background-color: #02992f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#top-right-btn:hover {
+  background-color: #0056b3;
 }
