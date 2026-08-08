@@ -120,29 +120,45 @@ body {
 
 /* 2. Wrapper für die visuelle Bild-Skalierung */
 .card-scaler {
-  --scale: 1; /* Wunsch-Skalierung */
+  /* 
+     Dynamische `--scale`:
+     Sorgt dafür, dass die Karte schrumpft (z.B. auf mobilen Geräten oder vielen Karten),
+     aber nie größer als Originalgröße (1) wird.
+  */
+  --scale: clamp(0.3, 25vw / 400, 1);
 
   display: inline-block;
-  margin: 10px;
-
-  /* Nutzt CSS Zoom für echtes Bild-Skalierverhalten */
+  margin: 0; /* Margin wird jetzt vom container gap übernommen */
   zoom: var(--scale);
 }
 
-/* Fallback/Alternative über CSS Transform (falls Zoom nicht genutzt werden soll) */
+/* Fallback für Browser ohne zoom Support */
 @supports not (zoom: 1) {
   .card-scaler {
-    /* Passt den Platz im Layout an die skalierte Größe an */
-    width: calc(100% * var(--scale));
+    width: auto;
   }
   .card-scaler .card {
     transform: scale(var(--scale));
+    /* Wichtig für zentriertes Transform-Behavior */
+    transform-origin: center center; 
   }
 }
 
 /* -------------------- Grid -------------------- */
 
 .grid-container {
-  display: grid;
-  grid-template-columns: auto auto auto;
+  /* Füllt immer genau den Bildschirm aus - absolut kein Scrollen */
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 2vw;
+  overflow: hidden;
+
+  /* Flexbox zentriert 1 Karte im Zentrum, 2 nebeneinander, 4 als 2x2 Block usw. */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly; /* Zentriert horizontal */
+  align-content: space-evenly;   /* Zentriert vertikal */
+  align-items: center;
+  gap: 1.5rem;
 }
