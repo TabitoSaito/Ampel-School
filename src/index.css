@@ -1,0 +1,148 @@
+/* 1. Grund-Setup für kein Scrollen */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* Verhindert Scrollbars */
+  background-color: #4e79df;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+  padding: 12px;
+}
+
+/* -------------------- Ampeln -------------------- */
+
+/* Gehäuse der Ampel */
+.traffic-light {
+  width: 100px;
+  background-color: #222;
+  padding: 15px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Grundzustand der Lichter (ausgeschaltet/ausgeblendet) */
+.light {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.25; /* Dunkelt inaktive Lichter ab */
+  transition:
+    opacity 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.light.red {
+  background-color: #ff3b30;
+}
+
+.light.yellow {
+  background-color: #ffcc00;
+}
+
+.light.green {
+  background-color: #34c759;
+}
+
+/* Aktiver Zustand mit Leuchteffekt */
+.light.red.active {
+  opacity: 1;
+  box-shadow:
+    0 0 20px #ff3b30,
+    0 0 40px #ff3b30;
+}
+
+.light.yellow.active {
+  opacity: 1;
+  box-shadow:
+    0 0 20px #ffcc00,
+    0 0 40px #ffcc00;
+}
+
+.light.green.active {
+  opacity: 1;
+  box-shadow:
+    0 0 20px #34c759,
+    0 0 40px #34c759;
+}
+
+/* -------------------- Card -------------------- */
+
+.card {
+  display: inline-flex;
+  align-items: stretch;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  font-family: sans-serif;
+
+  /* Verhindert Rendering-Subpixel-Verschiebungen */
+  transform-origin: top left;
+}
+
+/* Linker Teil: Passt sich dem Inhalt an */
+.card-left {
+  background-color: #66d31d;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Rechter Teil: 2 Zeilen Vor-/Nachname */
+.card-right {
+  background-color: #f4f4f9;
+  color: #333;
+  padding: 10px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: max-content;
+  min-width: 350px;
+  white-space: nowrap;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* 2. Wrapper für die visuelle Bild-Skalierung */
+.card-scaler {
+  --scale: 1; /* Wunsch-Skalierung */
+
+  display: inline-block;
+  margin: 10px;
+
+  /* Nutzt CSS Zoom für echtes Bild-Skalierverhalten */
+  zoom: var(--scale);
+}
+
+/* Fallback/Alternative über CSS Transform (falls Zoom nicht genutzt werden soll) */
+@supports not (zoom: 1) {
+  .card-scaler {
+    /* Passt den Platz im Layout an die skalierte Größe an */
+    width: calc(100% * var(--scale));
+  }
+  .card-scaler .card {
+    transform: scale(var(--scale));
+  }
+}
+
+/* -------------------- Grid -------------------- */
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}

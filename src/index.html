@@ -1,13 +1,329 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" href="index.css" />
+    <script src="index.js"></script>
     <title>Hello from Electron renderer!</title>
   </head>
-  <body>
-    <h1>Hello from Electron renderer!</h1>
-    <p>👋</p>
-    <p id="info"></p>
-  </body>
-  <script src="./renderer.js"></script>
+  <!-- <div class="traffic-light">
+    <div class="light red active" onclick="switchLight('red')"></div>
+    <div class="light yellow" onclick="switchLight('yellow')"></div>
+    <div class="light green" onclick="switchLight('green')"></div>
+  </div> -->
+
+  <div class="grid-container">
+    <div class="card-scaler" style="--scale: 0.5">
+      <div class="card">
+        <div class="card-left">
+          <div class="traffic-light" id="traffic-light-1">
+            <div
+              class="light red active"
+              onclick="switchLight('red', 'traffic-light-1')"
+            ></div>
+            <div
+              class="light yellow"
+              onclick="switchLight('yellow', 'traffic-light-1')"
+            ></div>
+            <div
+              class="light green"
+              onclick="switchLight('green', 'traffic-light-1')"
+            ></div>
+          </div>
+        </div>
+        <div class="card-right">
+          <span>Max</span>
+          <span>Mustermann</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-scaler" style="--scale: 0.5">
+      <div class="card">
+        <div class="card-left">
+          <div class="traffic-light" id="traffic-light-2">
+            <div
+              class="light red active"
+              onclick="switchLight('red', 'traffic-light-2')"
+            ></div>
+            <div
+              class="light yellow"
+              onclick="switchLight('yellow', 'traffic-light-2')"
+            ></div>
+            <div
+              class="light green"
+              onclick="switchLight('green', 'traffic-light-2')"
+            ></div>
+          </div>
+        </div>
+        <div class="card-right">
+          <span>Max</span>
+          <span>Mustermann</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-scaler" style="--scale: 0.5">
+      <div class="card">
+        <div class="card-left">
+          <div class="traffic-light" id="traffic-light-2">
+            <div
+              class="light red active"
+              onclick="switchLight('red', 'traffic-light-2')"
+            ></div>
+            <div
+              class="light yellow"
+              onclick="switchLight('yellow', 'traffic-light-2')"
+            ></div>
+            <div
+              class="light green"
+              onclick="switchLight('green', 'traffic-light-2')"
+            ></div>
+          </div>
+        </div>
+        <div class="card-right">
+          <span>Max</span>
+          <span>Mustermann</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-scaler" style="--scale: 0.5">
+      <div class="card">
+        <div class="card-left">
+          <div class="traffic-light" id="traffic-light-2">
+            <div
+              class="light red active"
+              onclick="switchLight('red', 'traffic-light-2')"
+            ></div>
+            <div
+              class="light yellow"
+              onclick="switchLight('yellow', 'traffic-light-2')"
+            ></div>
+            <div
+              class="light green"
+              onclick="switchLight('green', 'traffic-light-2')"
+            ></div>
+          </div>
+        </div>
+        <div class="card-right">
+          <span>Max</span>
+          <span>Mustermann</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-scaler" style="--scale: 0.5">
+      <div class="card">
+        <div class="card-left">
+          <div class="traffic-light" id="traffic-light-2">
+            <div
+              class="light red active"
+              onclick="switchLight('red', 'traffic-light-2')"
+            ></div>
+            <div
+              class="light yellow"
+              onclick="switchLight('yellow', 'traffic-light-2')"
+            ></div>
+            <div
+              class="light green"
+              onclick="switchLight('green', 'traffic-light-2')"
+            ></div>
+          </div>
+        </div>
+        <div class="card-right">
+          <span>Max</span>
+          <span>Mustermann</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-scaler" style="--scale: 0.5">
+      <div class="card">
+        <div class="card-left">
+          <div class="traffic-light" id="traffic-light-2">
+            <div
+              class="light red active"
+              onclick="switchLight('red', 'traffic-light-2')"
+            ></div>
+            <div
+              class="light yellow"
+              onclick="switchLight('yellow', 'traffic-light-2')"
+            ></div>
+            <div
+              class="light green"
+              onclick="switchLight('green', 'traffic-light-2')"
+            ></div>
+          </div>
+        </div>
+        <div class="card-right">
+          <span>Max</span>
+          <span>Mustermann</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-scaler" style="--scale: 0.5">
+      <div class="card">
+        <div class="card-left">
+          <div class="traffic-light" id="traffic-light-2">
+            <div
+              class="light red active"
+              onclick="switchLight('red', 'traffic-light-2')"
+            ></div>
+            <div
+              class="light yellow"
+              onclick="switchLight('yellow', 'traffic-light-2')"
+            ></div>
+            <div
+              class="light green"
+              onclick="switchLight('green', 'traffic-light-2')"
+            ></div>
+          </div>
+        </div>
+        <div class="card-right">
+          <span>Max</span>
+          <span>Mustermann</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-scaler" style="--scale: 0.5">
+      <div class="card">
+        <div class="card-left">
+          <div class="traffic-light" id="traffic-light-2">
+            <div
+              class="light red active"
+              onclick="switchLight('red', 'traffic-light-2')"
+            ></div>
+            <div
+              class="light yellow"
+              onclick="switchLight('yellow', 'traffic-light-2')"
+            ></div>
+            <div
+              class="light green"
+              onclick="switchLight('green', 'traffic-light-2')"
+            ></div>
+          </div>
+        </div>
+        <div class="card-right">
+          <span>Max</span>
+          <span>Mustermann</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-scaler" style="--scale: 0.5">
+      <div class="card">
+        <div class="card-left">
+          <div class="traffic-light" id="traffic-light-2">
+            <div
+              class="light red active"
+              onclick="switchLight('red', 'traffic-light-2')"
+            ></div>
+            <div
+              class="light yellow"
+              onclick="switchLight('yellow', 'traffic-light-2')"
+            ></div>
+            <div
+              class="light green"
+              onclick="switchLight('green', 'traffic-light-2')"
+            ></div>
+          </div>
+        </div>
+        <div class="card-right">
+          <span>Max</span>
+          <span>Mustermann</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-scaler" style="--scale: 0.5">
+      <div class="card">
+        <div class="card-left">
+          <div class="traffic-light" id="traffic-light-2">
+            <div
+              class="light red active"
+              onclick="switchLight('red', 'traffic-light-2')"
+            ></div>
+            <div
+              class="light yellow"
+              onclick="switchLight('yellow', 'traffic-light-2')"
+            ></div>
+            <div
+              class="light green"
+              onclick="switchLight('green', 'traffic-light-2')"
+            ></div>
+          </div>
+        </div>
+        <div class="card-right">
+          <span>Max</span>
+          <span>Mustermann</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-scaler" style="--scale: 0.5">
+      <div class="card">
+        <div class="card-left">
+          <div class="traffic-light" id="traffic-light-2">
+            <div
+              class="light red active"
+              onclick="switchLight('red', 'traffic-light-2')"
+            ></div>
+            <div
+              class="light yellow"
+              onclick="switchLight('yellow', 'traffic-light-2')"
+            ></div>
+            <div
+              class="light green"
+              onclick="switchLight('green', 'traffic-light-2')"
+            ></div>
+          </div>
+        </div>
+        <div class="card-right">
+          <span>Max</span>
+          <span>Mustermann</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-scaler" style="--scale: 0.5">
+      <div class="card">
+        <div class="card-left">
+          <div class="traffic-light" id="traffic-light-2">
+            <div
+              class="light red active"
+              onclick="switchLight('red', 'traffic-light-2')"
+            ></div>
+            <div
+              class="light yellow"
+              onclick="switchLight('yellow', 'traffic-light-2')"
+            ></div>
+            <div
+              class="light green"
+              onclick="switchLight('green', 'traffic-light-2')"
+            ></div>
+          </div>
+        </div>
+        <div class="card-right">
+          <span>Max</span>
+          <span>Mustermann</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-scaler" style="--scale: 0.5">
+      <div class="card">
+        <div class="card-left">
+          <div class="traffic-light" id="traffic-light-2">
+            <div
+              class="light red active"
+              onclick="switchLight('red', 'traffic-light-2')"
+            ></div>
+            <div
+              class="light yellow"
+              onclick="switchLight('yellow', 'traffic-light-2')"
+            ></div>
+            <div
+              class="light green"
+              onclick="switchLight('green', 'traffic-light-2')"
+            ></div>
+          </div>
+        </div>
+        <div class="card-right">
+          <span>Max</span>
+          <span>Mustermann</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </html>
