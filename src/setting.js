@@ -104,7 +104,7 @@ async function saveDataset() {
     const id = parseInt(idTd.getAttribute("data-id"));
     const firstName = tr.querySelector(".input-firstName").value;
     const lastName = tr.querySelector(".input-lastName").value;
-    const lastState = parseFloat(tr.querySelector(".input-lastState").value) || "red";
+    const lastState = tr.querySelector(".input-lastState").value || "red";
 
     updatedDataset.push({ id, firstName, lastName, lastState });
   });
