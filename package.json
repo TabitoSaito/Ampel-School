@@ -2,7 +2,7 @@
   "name": "ampel-school",
   "productName": "Ampel School",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple Traffic light feeling display.",
   "license": "MIT",
   "author": "Dominik Hölzl",
   "type": "module",
