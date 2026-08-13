@@ -8,7 +8,7 @@ export default {
     {
       name: '@electron-forge/maker-squirrel',
       config: {
-        name: 'ampel_school',
+        name: 'AmpelSchool',
         setupIcon: './assets/icon.ico',
         createDesktopShortcut: true,
         createStartMenuShortcut: true,
