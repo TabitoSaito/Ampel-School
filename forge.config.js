@@ -6,13 +6,16 @@ export default {
   rebuildConfig: {},
   makers: [
     {
-      name: '@electron-forge/maker-squirrel',
+      name: '@electron-forge/maker-wix',
       config: {
-        name: 'AmpelSchool',
-        setupIcon: './assets/icon.ico',
-        createDesktopShortcut: true,
-        createStartMenuShortcut: true,
-      },
+        name: 'Ampel School',
+        outputName: "setup",
+        manufacturer: 'Dominik Hoelzl',
+        language: 1031,
+        ui: {
+          chooseDirectory: true,   
+      }
+    }
     },
     {
       name: '@electron-forge/maker-zip',
