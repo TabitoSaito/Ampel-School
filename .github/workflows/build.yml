@@ -30,6 +30,8 @@ jobs:
       - name: Upload Executable to Release
         uses: softprops/action-gh-release@v2
         with:
-          files: out/make/wix/x64/*.msi
+          files: |
+            out/make/wix/x64/*.msi
+            out/make/zip/win32/x64/*.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

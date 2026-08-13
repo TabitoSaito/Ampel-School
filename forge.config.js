@@ -12,6 +12,7 @@ export default {
         outputName: "setup",
         manufacturer: 'Dominik Hoelzl',
         language: 1031,
+        icon: './assets/icon.ico',
         ui: {
           chooseDirectory: true,   
       }
