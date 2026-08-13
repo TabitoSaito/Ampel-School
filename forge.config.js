@@ -17,4 +17,17 @@ export default {
       platforms: ['win32'],
     },
   ],
+  publishers: [
+    {
+      name: '@electron-forge/publisher-github',
+      config: {
+        repository: {
+          owner: 'TabitoSaito',
+          name: 'Ampel-School'
+        },
+        prerelease: false,
+        draft: true // Erstellt zuerst einen Entwurf, den du prüfen kannst
+      }
+    }
+  ]
 };
