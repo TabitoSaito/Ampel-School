@@ -10,6 +10,8 @@ export default {
       config: {
         name: 'ampel_school',
         setupIcon: './assets/icon.ico',
+        createDesktopShortcut: true,
+        createStartMenuShortcut: true,
       },
     },
     {
