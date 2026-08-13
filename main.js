@@ -12,6 +12,10 @@ if (!store.has('cardData')) {
   store.set('cardData', []);
 }
 
+if (require('electron-squirrel-startup')) {
+  return;
+}
+
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 800,
